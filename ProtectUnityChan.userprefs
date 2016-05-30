@@ -1,0 +1,20 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/CubeStateChanger.cs">
+    <Files>
+      <File FileName="Assets/SteamVR/Scripts/SteamVR_Utils.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/MoveToTarget.cs" Line="19" Column="1" />
+      <File FileName="Assets/_Scripts/RandomWalkUnityChan.cs" Line="28" Column="44" />
+      <File FileName="Assets/UnityChan/Scripts/SpringCollider.cs" Line="21" Column="24" />
+      <File FileName="Assets/UnityChan/Scripts/SpringBone.cs" Line="106" Column="100" />
+      <File FileName="Assets/_Scripts/CubeGenerator.cs" Line="20" Column="108" />
+      <File FileName="Assets/_Scripts/CubeStateChanger.cs" Line="21" Column="47" />
+      <File FileName="Assets/_Scripts/ObjectHolder.cs" Line="60" Column="41" />
+      <File FileName="Assets/_Scripts/Materials.cs" Line="8" Column="28" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

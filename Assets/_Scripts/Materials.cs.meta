@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 93f988e6547ad4c3bb221b27f6a0d644
+timeCreated: 1464559854
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - GreenCubeMat: {fileID: 2100000, guid: 3ea08bd8a829948dcbc62e856440f51f, type: 2}
+  - RedCubeMat: {fileID: 2100000, guid: dea1cb5f9956440da9d2f43bd42139a7, type: 2}
+  - BlueCubeMat: {fileID: 2100000, guid: 778628be69a084617842158adcdc1075, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
