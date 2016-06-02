@@ -25,9 +25,11 @@ public class RandomWalkUnityChan : MonoBehaviour
         StartCoroutine(randomState());
 
         this.UpdateAsObservable()
+            .Where(_ => !ownAnim.GetBool("GameOver"))
             .Subscribe(_ => moveUnityChan());
         
         this.UpdateAsObservable()
+            .Where(_ => !ownAnim.GetBool("GameOver"))
             .Where(_ => nowAnimState == Walking || nowAnimState == Running)
             .Subscribe(_ => rotateUnityChan());
     }
