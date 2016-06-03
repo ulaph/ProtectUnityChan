@@ -13,6 +13,9 @@ public class GameUIPresenter : MonoBehaviour
 
     void Start()
     {
+        this.UpdateAsObservable()
+            .Subscribe(_ => setCanvas());
+
         this.LateUpdateAsObservable()
             .Where(_ => !controller.IsGameOver)
             .Subscribe(_ =>
@@ -29,5 +32,11 @@ public class GameUIPresenter : MonoBehaviour
                 PlayerPrefs.SetInt("KILLENEMY", controller.KillEnemy);
                 PlayerPrefs.SetInt("SCORE", (int)(controller.KillEnemy * 100 + controller.ElapsedTime * 100));
             });
+    }
+
+    void setCanvas()
+    {
+        transform.position = new Vector3(transform.position.x,10,transform.position.z);
+        transform.LookAt(Vector3.zero);
     }
 }
