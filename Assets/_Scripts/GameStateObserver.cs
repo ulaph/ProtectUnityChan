@@ -1,27 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UniRx;
-using UniRx.Triggers;
 
-public class GameStateObserver : MonoBehaviour
+public sealed class GameStateObserver : MonoBehaviour
 {
-    ReactiveProperty<GameState> state = new ReactiveProperty<GameState>();
+    private static GameStateObserver _singleInstance;
 
-    void Start()
+    public bool IsGameOver { get; set; }
+
+    public int KillEnemy { get; set; }
+
+    public float ElapsedTime { get; set; }
+
+    public static GameStateObserver Instance
     {
-        
+        get
+        {
+            if (_singleInstance == null)
+            {
+
+                GameObject status = new GameObject("GameStateObserver");
+                _singleInstance = status.AddComponent<GameStateObserver>();
+            }
+            return _singleInstance;
+        }
     }
 
-    public IObservable<GameState> GAmeStateAsObservable()
+    void Awake()
     {
-        return state.AsObservable().Publish().RefCount();
-    }
-
-    public enum GameState
-    {
-        GameStart,
-        GameOver,
-        KillEnemy,
-        ElapsedTime
+        IsGameOver = false;
+        KillEnemy = 0;
+        ElapsedTime = 0;
     }
 }

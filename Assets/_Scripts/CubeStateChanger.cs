@@ -9,6 +9,8 @@ public class CubeStateChanger : MonoBehaviour
     Rigidbody cubeRb;
     Renderer cubeRen;
     BoxCollider cubeCol;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip clip;
 
     ObjectHolder obj;
 
@@ -54,5 +56,15 @@ public class CubeStateChanger : MonoBehaviour
     {
         yield return new WaitForSeconds(15);
         Destroy(this.gameObject);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.transform.tag)
+        {
+            case "Field":
+                audioSource.PlayOneShot(clip);
+                break;
+        }
     }
 }
