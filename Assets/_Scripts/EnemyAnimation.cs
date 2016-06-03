@@ -7,6 +7,10 @@ public class EnemyAnimation : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip hitUni;
     [SerializeField] AudioClip death;
+    [SerializeField] CapsuleCollider cCol;
+    [SerializeField] SphereCollider sCol;
+    [SerializeField] Rigidbody enemyRb;
+
     Animator enemyAnim;
     NavMeshAgent enemyNav;
 
@@ -29,12 +33,22 @@ public class EnemyAnimation : MonoBehaviour
                 enemyAnim.SetTrigger("PlayerDead");
                 break;
             case "Uni":
+                cCol.isTrigger = true;
+                sCol.isTrigger = true;
+                Destroy(enemyRb);
                 audioSource.PlayOneShot(hitUni);
                 audioSource.PlayOneShot(death);
                 enemyNav.speed = 0;
                 enemyAnim.SetTrigger("Dead");
+
                 break;
         }
+    }
+
+    IEnumerator destroyThis()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(this.gameObject);
     }
 
 }
