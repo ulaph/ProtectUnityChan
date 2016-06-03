@@ -63,6 +63,7 @@ public class CubeStateChanger : MonoBehaviour
         switch (collision.transform.tag)
         {
             case "Field":
+                this.transform.localScale = Vector3.one;
                 audioSource.PlayOneShot(clip);
                 break;
         }
