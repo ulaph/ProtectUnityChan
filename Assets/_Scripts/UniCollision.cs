@@ -5,7 +5,12 @@ public class UniCollision : MonoBehaviour
 {
 
     [SerializeField] GameObject lightning;
-    [SerializeField] GameController controller;
+    GameController controller;
+
+    void Start()
+    {
+        controller = FindObjectOfType<GameController>();
+    }
 
     void OnCollisionEnter(Collision collision)
     {

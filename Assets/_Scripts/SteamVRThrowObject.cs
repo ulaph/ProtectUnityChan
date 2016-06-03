@@ -8,6 +8,7 @@ public class SteamVRThrowObject : MonoBehaviour
     [SerializeField] GameObject cube;
     [SerializeField] Rigidbody attachPoint;
 
+
     SteamVR_TrackedObject trackedObj;
     FixedJoint joint;
     int objMode;

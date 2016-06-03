@@ -40,7 +40,7 @@ public class EnemyAnimation : MonoBehaviour
                 audioSource.PlayOneShot(death);
                 enemyNav.speed = 0;
                 enemyAnim.SetTrigger("Dead");
-
+                StartCoroutine(destroyThis());
                 break;
         }
     }
