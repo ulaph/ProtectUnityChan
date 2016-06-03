@@ -27,11 +27,14 @@ public class MoveOwnPosition : MonoBehaviour
     bool isTriggerDown()
     {
         var device = SteamVR_Controller.Input((int)trackedObj.index);
-        if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger))
+        if (device.GetTouch(SteamVR_Controller.ButtonMask.Trigger))
         {
             return true;
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     bool isTriggerUp()
@@ -41,14 +44,17 @@ public class MoveOwnPosition : MonoBehaviour
         {
             return true;
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     void dropRay()
     {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Camera.main.farClipPlane))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
             movePos = hit.point;
             targetPointer.SetActive(true);
@@ -58,6 +64,7 @@ public class MoveOwnPosition : MonoBehaviour
 
     void moveTOPoint()
     {
+        movePos.y = 0;
         ownPlayer.transform.position = movePos;
     }
 }

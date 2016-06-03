@@ -19,15 +19,15 @@ public class SteamVRThrowObject : MonoBehaviour
         cube.transform.localScale = Vector3.one * 0.5F;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         var device = SteamVR_Controller.Input((int)trackedObj.index);
+        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+        {
+            modeChange(objMode);
+        }
         if (joint == null && device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger))
         {
-            if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
-            {
-                modeChange(objMode);
-            }
             var go = GameObject.Instantiate(objSelect(objMode));
             go.SetActive(true);
             go.transform.position = attachPoint.transform.position;

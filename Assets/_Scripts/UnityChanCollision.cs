@@ -8,6 +8,7 @@ public class UnityChanCollision : MonoBehaviour
     [SerializeField] AudioClip[] onGame;
     [SerializeField] AudioClip[] gameOver;
     [SerializeField] Animator ownAnim;
+    [SerializeField] GameController controller;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class UnityChanCollision : MonoBehaviour
                 audioSource.Stop();
                 audioSource.PlayOneShot(gameOver[Random.Range(0, gameOver.Length)]);
                 ownAnim.SetBool("GameOver", true);
+                controller.IsGameOver = true;
                 break;
         }
     }
@@ -30,8 +32,8 @@ public class UnityChanCollision : MonoBehaviour
     IEnumerator unityChanVoice()
     {
         yield return new WaitForSeconds(Random.Range(15, 31));
-        var state = GameStateObserver.Instance;
-        if (!state.IsGameOver)
+
+        if (!controller.IsGameOver)
         {
             audioSource.PlayOneShot(onGame[Random.Range(0, onGame.Length)]);
         }

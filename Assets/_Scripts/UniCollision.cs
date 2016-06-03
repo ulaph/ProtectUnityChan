@@ -5,6 +5,7 @@ public class UniCollision : MonoBehaviour
 {
 
     [SerializeField] GameObject lightning;
+    [SerializeField] GameController controller;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -13,6 +14,7 @@ public class UniCollision : MonoBehaviour
             lightning.SetActive(true);
             lightning.transform.SetParent(collision.transform);
             lightning.transform.position = collision.transform.position;
+            controller.KillEnemy++;
             Destroy(this.gameObject);
 
         }
