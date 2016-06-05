@@ -15,35 +15,37 @@ public class Parabola : MonoBehaviour
 
     void Start()
     {
-        dotsNum = 100;
+        dotsNum = 1000;
         dots = new GameObject[dotsNum];
         for (int i = 0; i < dotsNum; i++)
         {
             dots[i] = Instantiate(dot);
         }
-        this.LateUpdateAsObservable()
+        this.UpdateAsObservable()
             .Where(_ => targetPointer.activeSelf)
             .Subscribe(_ =>
             {
                 dot.SetActive(true);
-                dot.transform.position = this.transform.position;
+                //dot.transform.position = this.transform.position;
                 showDots();
             });
-        this.LateUpdateAsObservable()
+        this.UpdateAsObservable()
             .Where(_ => !targetPointer.activeSelf)
             .Subscribe(_ => dot.SetActive(false));
     }
 
     float targetDistance()
     {
-        return Vector3.Distance(transform.position, targetPointer.transform.position);
+        var ownPos = new Vector2(transform.position.x, transform.position.z);
+        var target = new Vector2(targetPointer.transform.position.x, targetPointer.transform.position.z);
+        return Vector2.Distance(ownPos,target);
     }
 
     float setAngle()
     {
-        //var ownHeight = transform.position.y;
+        var ownHeight = transform.position.y;
         var distance = targetDistance();
-        initialVelocity = distance;
+        initialVelocity = 3 + distance;
         var a = (gravity * Mathf.Pow(distance, 2)) / (2F * Mathf.Pow(initialVelocity, 2));
         var b = -distance;
         var c = a;
@@ -51,10 +53,6 @@ public class Parabola : MonoBehaviour
         d = Mathf.Sqrt(d);
         var tan = (-b + d) / (2F * a);
         var rad = Mathf.Atan(tan);
-        Debug.Log(a);
-        Debug.Log(b);
-        Debug.Log(c);
-        Debug.Log(d);
         return rad;
     }
 
