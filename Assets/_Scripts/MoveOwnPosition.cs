@@ -33,6 +33,7 @@ public class MoveOwnPosition : MonoBehaviour
         }
         else
         {
+            targetPointer.SetActive(false);
             return false;
         }
     }
@@ -46,6 +47,7 @@ public class MoveOwnPosition : MonoBehaviour
         }
         else
         {
+            
             return false;
         }
     }

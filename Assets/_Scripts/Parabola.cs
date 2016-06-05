@@ -21,17 +21,23 @@ public class Parabola : MonoBehaviour
         {
             dots[i] = Instantiate(dot);
         }
-        this.UpdateAsObservable()
+        this.LateUpdateAsObservable()
             .Where(_ => targetPointer.activeSelf)
             .Subscribe(_ =>
             {
-                dot.SetActive(true);
+                
                 //dot.transform.position = this.transform.position;
                 showDots();
             });
-        this.UpdateAsObservable()
+        this.LateUpdateAsObservable()
             .Where(_ => !targetPointer.activeSelf)
-            .Subscribe(_ => dot.SetActive(false));
+            .Subscribe(_ =>
+            {
+                for (int i = 0; i < dotsNum; i++)
+                {
+                    dots[i].SetActive(false);
+                }
+            }   );
     }
 
     float targetDistance()
@@ -65,6 +71,7 @@ public class Parabola : MonoBehaviour
             var angle = setAngle();
             var x = delta * i;
             var y = Mathf.Tan(angle) * x - (gravity * x * x) / (2F * initialVelocity * initialVelocity * Mathf.Cos(angle) * Mathf.Cos(angle));
+            dots[i].SetActive(true);
             dots[i].transform.position = transform.position + transform.forward * x + transform.up * y;
         }
     }
